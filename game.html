@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth or Dare - The Wheel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+    <div class="game-container">
+        <section class="spinner-section">
+            <div class="spinner-wrapper">
+                <div class="needle"></div>
+                <canvas id="wheelCanvas" width="400" height="400"></canvas>
+            </div>
+            <button id="spinBtn" class="btn btn-spin">SPIN THE WHEEL 🎯</button>
+        </section>
+
+        <section class="interaction-section">
+            <div id="statusPanel" class="panel current-turn-panel">
+                <h2>Ready to play?</h2>
+                <p>Click the spin button to select a random player!</p>
+            </div>
+
+            <div id="choicePanel" class="panel hidden">
+                <h2 id="selectedPlayerName">Player Name</h2>
+                <p>Choose your fate:</p>
+                <div class="choice-buttons">
+                    <button id="truthBtn" class="btn btn-truth">🤔 Truth</button>
+                    <button id="dareBtn" class="btn btn-dare">⚡ Dare</button>
+                </div>
+            </div>
+
+            <div id="challengePanel" class="panel hidden">
+                <h3 id="challengeType">Truth</h3>
+                <p id="challengeText">The prompt will appear here...</p>
+                <button id="nextTurnBtn" class="btn btn-primary">Next Turn 🔄</button>
+            </div>
+            
+            <a href="index.html" class="back-link">← Edit Players</a>
+        </section>
+    </div>
+
+    <script src="js/players.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/spinner.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

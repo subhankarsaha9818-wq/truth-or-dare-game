@@ -1,0 +1,147 @@
+.game-container {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    gap: 40px;
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+}
+
+/* Spinner Styles */
+.spinner-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.spinner-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+@media (max-width: 430px) {
+    .spinner-wrapper {
+        width: 300px;
+        height: 300px;
+    }
+    #wheelCanvas {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* The Needle Arrow pointing down at the wheel top center */
+.needle {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #f59e0b;
+    filter: drop-shadow(0px 4px 5px rgba(0,0,0,0.5));
+    z-index: 10;
+}
+
+.btn-spin {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    font-size: 1.1rem;
+    padding: 15px 40px;
+    box-shadow: 0 5px 15px rgba(217, 119, 6, 0.4);
+}
+
+.btn-spin:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+.btn-spin:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* UI Panel Styles */
+.interaction-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 280px;
+    justify-content: center;
+}
+
+.panel {
+    background-color: #0f172a;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+    animation: fadeIn 0.4s ease;
+}
+
+.current-turn-panel h2 {
+    color: var(--accent-primary);
+    margin-bottom: 10px;
+}
+
+.choice-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-truth { background-color: var(--truth-color); color: white; flex: 1; }
+.btn-truth:hover { background-color: #0891b2; }
+
+.btn-dare { background-color: var(--dare-color); color: white; flex: 1; }
+.btn-dare:hover { background-color: #e11d48; }
+
+#challengeType {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.panel[id="challengePanel"] {
+    border-top: 4px solid var(--accent-primary);
+}
+
+#challengeText {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 10px;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--text-light);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

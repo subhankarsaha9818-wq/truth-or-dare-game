@@ -1,0 +1,113 @@
+.hero-container {
+    max-width: 650px;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+.hero-header .amp {
+    color: var(--dare-color);
+}
+
+.hero-header p {
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.player-setup-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.player-setup-card h2 {
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 480px) {
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.input-group {
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #334155;
+    background-color: #0f172a;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+.input-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    max-height: 300px; /* Adds a scrollbar if they add too many players */
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.flex-input {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.setup-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-secondary {
+    background-color: #334155;
+    color: white;
+    width: 100%;
+}
+.btn-secondary:hover {
+    background-color: #475569;
+}
+
+.btn-remove {
+    background-color: var(--dare-color);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
