@@ -1,4 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Background music setup: creates audio element and a fixed toggle button.
+    (function setupBackgroundMusic() {
+        const musicSrc = 'assets/music/bg.mp3';
+        const audio = new Audio(musicSrc);
+        audio.loop = true;
+        audio.volume = 0.5;
+        audio.id = 'bgAudio';
+
+        // Create toggle button
+        const toggleBtn = document.createElement('button');
+        toggleBtn.id = 'musicToggleBtn';
+        toggleBtn.className = 'music-toggle';
+
+        function updateBtnUI(enabled) {
+            toggleBtn.textContent = enabled ? '🔊' : '🔈';
+            toggleBtn.title = enabled ? 'Mute background music' : 'Enable background music';
+        }
+
+        // Persist preference in localStorage
+        const saved = localStorage.getItem('bgMusicEnabled');
+        let musicEnabled = saved === null ? true : saved === 'true';
+        updateBtnUI(musicEnabled);
+
+        toggleBtn.addEventListener('click', () => {
+            musicEnabled = !musicEnabled;
+            localStorage.setItem('bgMusicEnabled', musicEnabled);
+            updateBtnUI(musicEnabled);
+            if (musicEnabled) {
+                audio.play().catch(() => {});
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        });
+
+        document.body.appendChild(toggleBtn);
+        // Append audio to DOM (hidden) so it's manageable via inspector if needed
+        audio.style.display = 'none';
+        document.body.appendChild(audio);
+
+        // Attempt to play if enabled; if blocked by autoplay policy, wait for user gesture
+        if (musicEnabled) {
+            audio.play().catch(() => {
+                const userGestureHandler = () => {
+                    audio.play().catch(() => {});
+                    document.removeEventListener('click', userGestureHandler);
+                };
+                document.addEventListener('click', userGestureHandler);
+            });
+        }
+    })();
     // Determine current loaded page context
     const playerForm = document.getElementById('player-form');
     const wheelCanvas = document.getElementById('wheelCanvas');
